@@ -1,0 +1,274 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+
+    font-family: "Ubuntu", sans-serif;
+
+}
+:root {
+    --color-principal: #1D3677;
+    --color-fondo: #b4bcff62;
+    --color-texto: #ccd1ff;
+    --radius: 10px;
+}
+
+body {
+    background-color: var(--color-fondo);
+}
+header, main {
+    width: 100%;
+    padding: 0px 10%;
+}
+main {
+    min-height: 90vh;
+    padding-bottom: 10vh;
+}
+header {
+    height: 10vh;
+    background-color: var(--color-principal);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: var(--color-texto);
+}
+nav {
+    display: flex;
+    gap: 10px;
+}
+a {
+    color: var(--color-texto);
+    text-decoration: none;
+}
+nav a:hover {
+    color: aliceblue;
+}
+footer {
+    background-color: var(--color-principal);
+    width: 100%;
+    height: 10vh;
+    color: var(--color-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1 { 
+    font-size: 2.5em; 
+    font-family: "Saira Stencil", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+}
+h1 b { 
+    font-family: "Saira Stencil", sans-serif;
+}
+h2 { font-size: 1.7em; }
+h3 { font-size: 1.5em; }
+p, ul, ol { font-size: 1.2em; }
+
+.card-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.card-container {
+    color: var(--color-texto);
+}
+.card {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: auto;
+
+    border-radius: var(--radius);
+}
+.card:hover {
+box-shadow: 16px -8px var(--color-texto);
+
+}
+
+.card-background, .card-text {
+    grid-area: 1 / 1;
+
+    width: 100%;
+    height: 45vh;
+
+    border-radius: var(--radius);
+}
+.card-text {
+    position: sticky;
+    top: 0;
+
+    background-color: #0000005a;
+    padding-left: 10vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1vh;
+    border-radius: var(--radius);
+}
+.card-text p {
+    padding-left: 5%;
+}
+.card-text ol, .card-text ul {
+    padding-left: 10vw;
+}
+.card-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    filter: blur(3px);
+}
+
+
+.header-inicio-container {
+    margin-bottom: 7.5vh;
+}
+
+
+.card-container h1 { font-family: "Ubuntu", sans-serif; }
+
+.title-text-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.card-href {
+    /* display: block; */
+    height: 20vh;
+}
+/* 
+.card-href h1:hover {
+    transform: scale(1.5) scale(1.1);
+} */
+
+.form-section {
+    display: flex;
+    height: 55vh;
+    width: 100%;
+
+    border: 1px grey solid;
+    border-radius: var(--radius);
+
+    background-color: aliceblue;
+}
+
+.form-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+
+    padding: 35px 0px;
+}
+.form-section h1 {
+    width: 35%;
+    text-align: center;
+}
+.form-div form {
+    display: grid;
+    grid-template-rows: 1fr 1fr 2fr 1fr;
+    gap: 10px;
+    height: 100%;
+    width: 60%;
+}
+input, textarea, button {
+    padding-left: 10px;
+    border: 1px solid gray;
+    border-radius: var(--radius);
+}
+textarea {
+    padding-top: 10px;
+}
+input, textarea {
+    background-color: aliceblue;
+}
+button {
+    background-color: var(--color-fondo);
+    cursor: pointer;
+    color: black;
+    font-weight: 600;
+}
+button:hover { background-color: var(--color-principal);     color: var(--color-texto); }
+@media screen and (max-width: 768px) {
+    header, main {
+        width: 100%;
+        padding: 0px 2.5%;
+    }
+    main {
+        min-height: 80vh;
+        padding-bottom: 10vh;
+    }
+    header {
+        height: 15vh;
+        background-color: var(--color-principal);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        color: var(--color-texto);
+    }
+    nav {
+        height: 5vh;
+    }
+
+    .card-background, .card-text {
+        grid-area: 1 / 1;
+
+        width: 100%;
+        height: 30vh;
+
+        border-radius: var(--radius);
+    }
+
+    h2 { font-size: 1.3em; }
+    h3 { font-size: 1.1em; }
+    p, ul, ol { font-size: .9em; }
+
+    .card-text p {
+    padding-left: 5%;
+    }
+    .card-text ol, .card-text ul {
+        padding-left: 10vw;
+    }
+
+    #headerInicio {
+        display: flex;
+        justify-content: center
+    }
+    .card-href {
+        /* display: block; */
+        height: 15vh;
+    }
+
+    .form-section {
+        display: flex;  
+        flex-direction: column;
+        height: 45vh;
+        width: 100%;
+
+        border: 1px grey solid;
+        border-radius: var(--radius);
+
+        background-color: aliceblue;
+    }
+    .form-div {
+        height: 100%;
+        width: 100%;
+        padding: 20px 10px;
+    }
+    .form-section h1 {
+        width: 100%;
+        text-align: center;
+    }
+    .form-div form {
+        gap: 10px;
+        width: 100%;
+    }
+
+}
