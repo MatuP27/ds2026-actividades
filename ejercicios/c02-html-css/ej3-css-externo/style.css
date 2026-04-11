@@ -1,0 +1,103 @@
+* {
+    padding: 0px;
+    margin: 0px;
+
+    font-family: "Ubuntu", sans-serif;
+}
+:root {
+    --color-principal: #;
+    --color-fondo: #;
+    --color-texto: ;
+    --radius: 10px;
+}
+
+body {
+    background-color: #b4bcff62;
+}
+header, main {
+    width: 100%;
+    padding: 0px 10%;
+}
+main {
+    min-height: 90vh;
+    padding-bottom: 10vh;
+}
+header {
+    background-color: #1D3677;
+    color: #ccd1ff;
+}
+
+a {
+    color: #ccd1ff;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #1D3677;
+    width: 100%;
+    height: 10vh;
+    color: #ccd1ff;
+    text-align: center;
+}
+h1 { 
+    font-size: 2.5em; 
+    font-family: "Saira Stencil", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+}
+h1 b { 
+    font-family: "Saira Stencil", sans-serif;
+}
+h2 { font-size: 1.7em; }
+h3 { font-size: 1.5em; }
+p, ul, ol { font-size: 1.2em; }
+
+.card-container {
+    width: 100%;
+}
+.card-container h1 { 
+    font-family: "Ubuntu", sans-serif;
+    color: black;
+}
+.card {
+    width: 100%;
+    height: auto;
+
+    border-radius: var(--radius);
+}
+
+
+.card-background, .card-text {
+    width: 100%;
+    height: 45vh;
+
+    border-radius: var(--radius);
+}
+.card-text {
+
+
+    padding-left: 10vw;
+
+    border-radius: var(--radius);
+}
+.card-text p {
+    padding-left: 5%;
+}
+.card-text ol, .card-text ul {
+    padding-left: 10vw;
+}
+.card-background img {
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+
+.header-inicio-container {
+    margin-bottom: 7.5vh;
+}
+
+
+.card-href {
+    height: 20vh;
+}
