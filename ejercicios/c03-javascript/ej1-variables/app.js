@@ -14,7 +14,7 @@ const nom = 'Matias';
 const edad = 21;
 const materia = 'Desarrollo de Software';
 
-console.log("Me llamo ", nom, " tengo ", edad, " años y curso ", materia, ".");
+console.log(`Me llamo ${nom} tengo ${edad} años y curso la materia ${materia}.`);
 
 let i = 0;
 i += 1;
