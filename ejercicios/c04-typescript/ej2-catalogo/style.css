@@ -1,0 +1,7 @@
+.libro-disponible-true {
+    color: green;
+}
+
+.libro-disponible-false {
+    color: red;
+}
