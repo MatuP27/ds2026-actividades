@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section class="catalogo">
+            <h1>Catálogo</h1>
+            <input type="text" id="filtroAutor">
+            <button id="filtrar">Filtrar</button>
+            <button id="mostrarDisponibles">Solo disponibles</button>
+            <button id="mostrarTodos">Ver todos</button>
+
+            <ul id="listado"> 
+                
+            </ul>
+            <p id="stats"></p>
+
+        </section>
+
+        <section class="">
+            <h1>Agregar libro</h1>
+
+            <form id="crearLibro" action="">
+                <input type="text" name="titulo" placeholder="Titulo" required>
+                <input type="text" name="autor" placeholder="Autor" required>
+                <input type="number" name="precio" placeholder="Precio" required>
+                <input type="checkbox" checked name="disponible">
+                <input type="text" name="genero" placeholder="Genero">
+                <button type="submit">Crear</button>
+            </form>
+            
+            <div id="errorForm"></div>
+        </section>
+    </main>    
+    <script src="app.js"></script>
+</body>
+</html>

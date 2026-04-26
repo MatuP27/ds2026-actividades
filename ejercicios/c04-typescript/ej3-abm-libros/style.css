@@ -1,0 +1,14 @@
+.libro-disponible-true {
+    color: green;
+}
+
+.libro-disponible-false {
+    color: red;
+}
+
+main {
+    display: flex;
+}
+main section {
+    width: 50%;
+}
