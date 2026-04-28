@@ -1,0 +1,36 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+main {
+    margin: 0px 10%;
+}
+
+.buscador {
+    max-width: 100%;
+    padding-bottom: 15px;
+}
+.buscador input {
+    width: 80%;
+    height: 25px;
+}
+.buscador button {
+    width: 20%;
+    height: 25px;
+}
+
+#resultado {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    border: 1px solid black;
+    border-radius: 5px;
+}
