@@ -3,38 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Librex</title>
+    <title>Tinta & Papel</title>
     <link rel="icon" type="image/png" href="https://images.vexels.com/media/users/3/267831/isolated/preview/cd079d709300f6af3cdfa75b83d35db8-icono-de-libros-acogedores-de-invierno.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="https://images.vexels.com/media/users/3/267831/isolated/preview/cd079d709300f6af3cdfa75b83d35db8-icono-de-libros-acogedores-de-invierno.png" alt="Logo" height="40" >
-                Librex
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-fixed">
+            <div class="container-lg">
+                <a class="navbar-brand" href="index.html">
+                    <img src="https://images.vexels.com/media/users/3/267831/isolated/preview/cd079d709300f6af3cdfa75b83d35db8-icono-de-libros-acogedores-de-invierno.png" alt="Logo" height="40" >
+                    Tinta & Papel
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="catalogo.html">Catálogo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="mt-5 container-lg">
+        <div class="mb-4 text-end">
+            <a href="catalogo.html" class="link-dark link-underline-opacity-0 icon-link icon-link-hover">
+                Volver al catálogo
+                <svg xmlns="http://w3.org" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 0.708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                </svg>
             </a>
+        </div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="card shadow-sm border-0">
+            <div class="row g-0 align-items-center">
+                <div class="col-12 col-md-6">
+                    <img src="https://cdn.milkbooks.com/media/22483/premiumpb-gallery-product-mspb-es_1x.webp" class="img-fluid rounded-start" alt="Portada del libro">
+                </div>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="catalogo.html">Catálogo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contacto.html">Contacto</a>
-                    </li>
-                </ul>
+                <div class="col-12 col-md-6">
+                    <div class="card-body p-4 p-lg-5">
+                        <h1 class="card-title h2 mb-1">Latitudes Compartidas</h1>
+                        <p class="text-muted h5 mb-4">Julián Rossi</p>
+                        
+                        <p class="card-text leading-relaxed text-secondary">
+                            Un recorrido visual minimalista que captura la esencia de seis ciudades emblemáticas...
+                        </p>
+
+                        <div class="d-grid d-md-block">
+                            <a href="#" class="btn btn-primary btn-lg px-5 fw-bold mt-4">Comprar</a>
+                        </div>
+                    </div>
+                </div>        
             </div>
         </div>
-    </nav>
+    </main>
+
+    <footer class="bg-primary text-white text-center py-4 mt-5">
+        <p class="mb-0">
+            © 2026 Librex - Todos los derechos reservados
+        </p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
