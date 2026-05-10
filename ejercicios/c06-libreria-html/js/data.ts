@@ -1,12 +1,12 @@
-
 interface LibroOL {
+    key: string,
     title: string,
     author_name?: string,
-    first_publish_year?: number,
-    cover_i?: number
+    cover_i?: number,
+    description?: string
 }
 
-class LibroOLInterfaz {
+class LibroInterfazCatalogo {
     private buscador: HTMLInputElement;
     private buscarButton: HTMLButtonElement;
 
@@ -28,7 +28,7 @@ class LibroOLInterfaz {
             this.renderizarCargando();
             const busqueda = this.validarBusqueda();
 
-            this.renderizar(await this.buscar(busqueda));
+            this.renderizar(await this.buscarPorPalabraClave(busqueda));
 
         } catch (error) {
             this.resultado.innerHTML = '';
@@ -53,7 +53,7 @@ class LibroOLInterfaz {
     renderizar(libros: LibroOL[]) {
         this.resultado.innerHTML = libros.length > 0 ? '' : 'No se encontro ningun resultado.';
         let cards = ``;
-        libros.forEach(({ title, author_name, first_publish_year, cover_i }) => {
+        libros.forEach(({ key, title, author_name, cover_i }) => {
             const card = `
                 <div class="col-12 col-sm-6 col-lg-4 d-flex">
                     <div class="card w-100">
@@ -64,9 +64,9 @@ class LibroOLInterfaz {
                         <div class="card-body">
                             <h5 class="card-title mb-1">${title}</h5>
                             <p class="text-secondary mb-3">
-                                ${author_name}
+                                ${author_name || 'Autor desconocido'}
                             </p>
-                            <a href="libro.html" class="btn btn-primary d-flex justify-content-center">Ver más...</a>
+                            <a href="libro.html?key=${encodeURIComponent(key)}" class="btn btn-primary d-flex justify-content-center">Ver más...</a>
                         </div>
                     </div>
                 </div>
@@ -75,6 +75,7 @@ class LibroOLInterfaz {
         });
         this.resultado.innerHTML = cards;
     }
+
     renderizarCargando(): void {
         this.resultado.innerHTML = `
             <div class="spinner-border text-primary" role="status">
@@ -95,7 +96,7 @@ class LibroOLInterfaz {
         this.errorDiv.innerHTML = '';
     }
 
-    async buscar(busqueda: string): Promise<LibroOL[]> {
+    async buscarPorPalabraClave(busqueda: string): Promise<LibroOL[]> {
         try {           
             const response = await fetch(`https://openlibrary.org/search.json?q=${busqueda}`);
 
@@ -103,12 +104,18 @@ class LibroOLInterfaz {
                 throw new Error('Error en la respuesta');
             }
             
-            return (await response.json()).docs.slice(0, 12);
-
+            return (await response.json()).docs.slice(0, 12).map((libro: any) => {
+                return {
+                    key: libro.key,
+                    title: libro.title,
+                    author_name: libro.author_name?.[0] || 'Autor desconocido',
+                    cover_i: libro.cover_i
+                };
+            });
         } catch (error) {
             throw error;
         }
     }
 }
 
-new LibroOLInterfaz;
+new LibroInterfazCatalogo;
