@@ -1,49 +1,66 @@
-"use strict";
+
+interface LibroOL {
+    title: string,
+    author_name?: string,
+    first_publish_year?: number,
+    cover_i?: number
+}
+
 class LibroOLInterfaz {
-    buscador;
-    buscarButton;
-    resultado;
-    errorDiv;
+    private buscador: HTMLInputElement;
+    private buscarButton: HTMLButtonElement;
+
+    private resultado: HTMLDivElement;
+    private errorDiv: HTMLDivElement;
+
     constructor() {
-        this.buscador = document.getElementById('buscador');
-        this.buscarButton = document.getElementById('buscarButton');
-        this.resultado = document.getElementById('resultado');
-        this.errorDiv = document.getElementById('errorDiv');
+        this.buscador = document.getElementById('buscador') as HTMLInputElement;
+        this.buscarButton = document.getElementById('buscarButton') as HTMLButtonElement;
+
+        this.resultado = document.getElementById('resultado') as HTMLDivElement;
+        this.errorDiv = document.getElementById('errorDiv') as HTMLDivElement;
+
         this.buscarButton.addEventListener('click', () => this.onClickBuscar());
     }
+
     async onClickBuscar() {
         try {
             this.renderizarCargando();
             const busqueda = this.validarBusqueda();
+
             this.renderizar(await this.buscar(busqueda));
-        }
-        catch (error) {
+
+        } catch (error) {
             this.resultado.innerHTML = '';
+
             this.mostrarError(error instanceof Error ? error.message : 'Error desconocido');
         }
     }
-    validarBusqueda() {
+
+    validarBusqueda(): string {
         try {
             const busqueda = this.buscador.value.trim();
             if (!busqueda || busqueda.length < 3) {
                 throw new Error('Busqueda invalida, al menos 3 caracteres.');
             }
             return busqueda;
-        }
-        catch (error) {
+
+        } catch (error) {
             throw error;
         }
     }
-    renderizar(libros) {
+    
+    renderizar(libros: LibroOL[]) {
         this.resultado.innerHTML = libros.length > 0 ? '' : 'No se encontro ningun resultado.';
         let cards = ``;
         libros.forEach(({ title, author_name, first_publish_year, cover_i }) => {
             const card = `
                 <div class="col-12 col-sm-6 col-lg-4 d-flex">
                     <div class="card w-100">
-                        <img src="${cover_i ?
-                'https://covers.openlibrary.org/b/id/' + cover_i + '-M.jpg' :
-                'https://static.thenounproject.com/png/1077596-200.png'}" class="card-img-top object-fit-contain" style="height: 400px;" alt="...">
+                        <img src="${cover_i ? 
+                            'https://covers.openlibrary.org/b/id/' + cover_i + '-M.jpg' : 
+                            'https://static.thenounproject.com/png/1077596-200.png'
+                            }" class="card-img-top object-fit-contain" style="height: 400px;" alt="...">
                         <div class="card-body">
                             <h5 class="card-title mb-1">${title}</h5>
                             <p class="text-secondary mb-3">
@@ -58,14 +75,15 @@ class LibroOLInterfaz {
         });
         this.resultado.innerHTML = cards;
     }
-    renderizarCargando() {
+    renderizarCargando(): void {
         this.resultado.innerHTML = `
             <div class="spinner-border text-primary" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
         `;
     }
-    async mostrarError(error) {
+
+    async mostrarError(error: string) {
         this.errorDiv.innerHTML = `
             <div class="alert alert-danger h-100 mt-2" style="height: 50px;" role="alert">
                 <div>
@@ -76,17 +94,21 @@ class LibroOLInterfaz {
         await new Promise(resolve => setTimeout(resolve, 2400));
         this.errorDiv.innerHTML = '';
     }
-    async buscar(busqueda) {
-        try {
+
+    async buscar(busqueda: string): Promise<LibroOL[]> {
+        try {           
             const response = await fetch(`https://openlibrary.org/search.json?q=${busqueda}`);
+
             if (!response.ok) {
                 throw new Error('Error en la respuesta');
             }
+            
             return (await response.json()).docs.slice(0, 12);
-        }
-        catch (error) {
+
+        } catch (error) {
             throw error;
         }
     }
 }
+
 new LibroOLInterfaz;
