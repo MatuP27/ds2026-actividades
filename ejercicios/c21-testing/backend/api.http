@@ -1,0 +1,60 @@
+@baseUrl = http://localhost:3000
+
+### Registro
+POST {{baseUrl}}/api/auth/registro
+Content-Type: application/json
+
+{ "nombre": "Ana", "email": "ana@libreria.test", "password": "Libreria2026" }
+### Login ← el @name es lo que permite capturar la respuesta
+# @name login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "ana@libreria.test",
+  "password": "Libreria2026"
+}
+### Guardamos el token de la respuesta anterior
+@token = {{login.response.body.token}}
+### Ahora cualquier request protegido lo usa
+GET {{baseUrl}}/api/auth/yo
+Authorization: Bearer {{token}}
+
+### Listar libros
+GET {{baseUrl}}/api/libros
+
+### Sólo los disponibles
+GET {{baseUrl}}/api/libros?disponible=true
+
+### Un libro
+GET {{baseUrl}}/api/libros/1
+
+### Un libro que no existe → 404
+GET {{baseUrl}}/api/libros/99
+
+### Eliminar un libro que no existe
+DELETE {{baseUrl}}/api/libros/99
+Authorization: Bearer {{token}}
+
+### Listar autores
+GET {{baseUrl}}/api/autores
+
+### Un autor
+GET {{baseUrl}}/api/autores/1
+
+### Un autor que no existe → 404
+GET {{baseUrl}}/api/autores/99
+
+### Eliminar un autor
+DELETE {{baseUrl}}/api/autores/1
+Authorization: Bearer {{token}}
+
+### Crear un autor
+POST http://localhost:3000/api/autores
+Content-Type: application/json
+
+{
+  "nombre": "Isabel Allende",
+  "nacionalidad": "Chile"
+}
+Authorization: Bearer {{token}}
